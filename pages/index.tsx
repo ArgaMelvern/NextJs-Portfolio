@@ -1,13 +1,22 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import Link from "next/link";
+import { Container, Box, Heading } from "@chakra-ui/react";
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">About</Link>
-    </p>
-  </Layout>
-)
+const Home: React.FC = () => {
+  return (
+    <Container>
+      <Box borderRadius="lg" bg="red" p={3} mb={6} textAlign="center">
+        Hello, I'm a Front-end developer based in Indonesia!
+      </Box>
+      <Box display={{ md: "flex" }}>
+        <Box flexGrow={1}>
+          <Heading as="h2" variant="page-title">
+            Arga Melvern
+          </Heading>
+          <p>(AI Engineer / Front-End Developer / UI/UX Designer)</p>
+        </Box>
+      </Box>
+    </Container>
+  );
+};
 
-export default IndexPage
+export default Home;
