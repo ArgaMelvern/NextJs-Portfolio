@@ -1,3 +1,4 @@
+// Navbar.tsx
 import Logo from "./Logo";
 import NextLink from "next/link";
 import {
@@ -13,6 +14,7 @@ import {
   MenuButton,
   IconButton,
   useColorModeValue,
+  withDefaultVariant,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 
@@ -55,14 +57,50 @@ const Navbar: React.FC<NavbarProps> = ({ path }) => {
         p={2}
         maxW="container.md"
         flexWrap="wrap"
-        alignSelf="center"
-        justifySelf="space-between"
+        justifyContent="space-between"
+        alignItems="center"
       >
-        <Flex align="center" mr={5}>
-          <Heading as="h1" size="lg" letterSpacing={"tighter"}>
+        <Flex align="center">
+          <Heading as="h1" size="lg" letterSpacing="tighter">
             <Logo />
           </Heading>
         </Flex>
+        <Stack
+          direction={{ base: "column", md: "row" }}
+          display={{ base: "none", md: "flex" }}
+          width={{ base: "full", md: "auto" }}
+          alignItems="center"
+          flexGrow={1}
+          mt={{ base: 4, md: 0 }}
+        >
+          <LinkItem href="/works" path={path}>
+            Works
+          </LinkItem>
+          <LinkItem href="/posts" path={path}>
+            Posts
+          </LinkItem>
+        </Stack>
+        <Box ml={2} display={{ base: "inline-block", md: "none" }}>
+          <Menu>
+            <MenuButton
+              as={IconButton}
+              icon={<HamburgerIcon />}
+              variant="outline"
+              aria-label="Options"
+            />
+            <MenuList>
+              <NextLink href="/" passHref>
+                <MenuItem as={Link}>About</MenuItem>
+              </NextLink>
+              <NextLink href="/works" passHref>
+                <MenuItem as={Link}>Works</MenuItem>
+              </NextLink>
+              <NextLink href="/posts" passHref>
+                <MenuItem as={Link}>Posts</MenuItem>
+              </NextLink>
+            </MenuList>
+          </Menu>
+        </Box>
       </Container>
     </Box>
   );
