@@ -1,5 +1,6 @@
 // Import necessary modules
 import Head from "next/head";
+import Navbar from "./NavBar";
 import { Box, Container } from "@chakra-ui/react";
 import { ReactNode } from "react"; // Import ReactNode type
 
@@ -17,6 +18,7 @@ const Main: React.FC<MainProps> = ({ children, router }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Arga Melvern - Homepage</title>
       </Head>
+      <Navbar path={router.asPath}></Navbar>
       <Container maxW="container.md" pt={14}>
         {children}
       </Container>
